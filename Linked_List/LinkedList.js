@@ -9,7 +9,7 @@ export default class LinkedList {
   // add at the beginning
   prepend(newValue) {
     // set new Node as Head
-    const newNode = new LinkedListNode(newValue);
+    const newNode = new LinkedListNode(newValue, this.head);
     this.head = newNode;
 
     // if there is no tail, set new Node as Tail also
@@ -17,4 +17,13 @@ export default class LinkedList {
     return this;
   }
 
+  toArray() {
+    let nodes = [];
+    let currentNode = this.head;
+    while (currentNode) {
+      nodes.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    return nodes;
+  }
 }
