@@ -51,6 +51,21 @@ export default class LinkedList {
     return deleteTail.value;
   }
 
+  deleteHead() {
+    const deleteHead = this.head;
+    if (!this.head) return "Linked List is empty";
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+      return deleteHead;
+    }
+    if (this.head.next) this.head = this.head.next;
+    else {
+      this.head = null;
+      this.tail = null;
+    }
+    return deleteHead.value;
+  }
 
   // com
   toArray() {
@@ -60,19 +75,21 @@ export default class LinkedList {
       nodes.push(currentNode.value);
       currentNode = currentNode.next;
     }
-    return nodes;
+    return nodes.length == 0 ? "Linked List is empty" : nodes;
   }
 
   toString() {
     const nodes = this.toArray();
     let resultString = "";
-    nodes.map(
-      (value, index) =>
-        (resultString +=
-          index == nodes.length - 1
-            ? `[${index + 1} >> ${value}]`
-            : `[${index + 1} >> ${value}] --> `)
-    );
-    return resultString;
+    if (nodes != "Linked List is empty") {
+      nodes.map(
+        (value, index) =>
+          (resultString +=
+            index == nodes.length - 1
+              ? `[${index + 1} >> ${value}]`
+              : `[${index + 1} >> ${value}] --> `)
+      );
+    }
+    return resultString == "" ? "Linked List is empty" : resultString;
   }
 }

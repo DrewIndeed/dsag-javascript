@@ -9,6 +9,7 @@ test1.append(27);
 test1.append("Woohoo");
 console.log(test1.toArray(), "\n");
 console.log(test1.toString(), "\n");
-console.log("Delete Node of value:", test1.deleteTail(), "\n");
+console.log("Delete ending Node:", test1.deleteTail(), "\n");
+console.log("Delete starting Node:", test1.deleteHead(), "\n");
 console.log(test1.toArray(), "\n");
 console.log(test1.toString(), "\n");
