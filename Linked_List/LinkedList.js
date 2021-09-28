@@ -67,7 +67,11 @@ export default class LinkedList {
     return deleteHead.value;
   }
 
-  // com
+  fromArray(arrayOfValues) {
+    arrayOfValues.forEach((value) => this.append(value));
+    return this;
+  }
+
   toArray() {
     let nodes = [];
     let currentNode = this.head;
