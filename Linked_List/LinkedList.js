@@ -1,4 +1,4 @@
-import LinkedListNode from "./LinkedListNode";
+import LinkedListNode from "./LinkedListNode.js";
 
 export default class LinkedList {
   constructor() {
@@ -16,6 +16,5 @@ export default class LinkedList {
     if (!this.tail) this.tail = newNode;
     return this;
   }
-    
-  
+
 }
