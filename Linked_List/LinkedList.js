@@ -26,4 +26,17 @@ export default class LinkedList {
     }
     return nodes;
   }
+
+  toString() {
+    const nodes = this.toArray();
+    let resultString = "";
+    nodes.map(
+      (value, index) =>
+        (resultString +=
+          index == nodes.length - 1
+            ? `[${index + 1} >> ${value}]`
+            : `[${index + 1} >> ${value}] --> `)
+    );
+    return resultString;
+  }
 }
