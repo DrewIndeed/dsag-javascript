@@ -17,6 +17,19 @@ export default class LinkedList {
     return this;
   }
 
+  append(newValue) {
+    const newNode = new LinkedListNode(newValue);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    return this;
+  }
+
+  // com
   toArray() {
     let nodes = [];
     let currentNode = this.head;
