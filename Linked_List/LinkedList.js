@@ -1,70 +1,103 @@
 import LinkedListNode from "./LinkedListNode.js";
 
 export default class LinkedList {
+  // constructor with two pointers to represent head and tail of LinkedList
   constructor() {
     this.head = null;
     this.tail = null;
   }
 
-  // add at the beginning
+  // INSERT AT THE BEGINNING
   prepend(newValue) {
-    // set new Node as Head
+    // create new NODE to contain desired VALUE + point to the current HEAD
     const newNode = new LinkedListNode(newValue, this.head);
+
+    // Set the new NODE as the head of the LinkedList
     this.head = newNode;
 
-    // if there is no tail, set new Node as Tail also
+    // If TAIL is not set, set TAIL to new NODE also
     if (!this.tail) this.tail = newNode;
+
+    // return updated LINKEDLIST
     return this;
   }
 
+  // INSERT AT THE END
   append(newValue) {
+    // create new NODE to contain desired VALUE
     const newNode = new LinkedListNode(newValue);
+
+    // if it is the first NODE
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
-    } else {
+    }
+    // otherwise, point TAIL NEXT to new NODE + set TAIL as new NODE
+    else {
       this.tail.next = newNode;
       this.tail = newNode;
     }
+
+    // return updated LINKEDLIST
     return this;
   }
 
-  deleteTail() {
-    const deleteTail = this.tail;
-    // linked list is empty
+  // DELETE AT THE BEGINNING
+  deleteHead() {
+    // if the LINKEDLIST is empty
     if (!this.head) return "Linked List is empty";
-    // linked list has only 1 node
-    if (this.head === this.tail) {
+
+    // store target HEAD in a variable
+    const deleteHead = this.head;
+
+    // if there is a NODE after head or HEAD NEXT exists, set HEAD as that NODE
+    if (this.head.next) this.head = this.head.next;
+    // otherwise, there is nothing after HEAD -> LINKEDLIST is empty
+    else {
+      // set back to initial state
       this.head = null;
       this.tail = null;
-      return deleteTail;
     }
-    // if linked list has more than 1 node
-    let currentNode = this.head;
-    while (currentNode) {
-      if (!currentNode.next.next) {
-        currentNode.next = null;
-        break;
-      } else currentNode = currentNode.next;
-    }
-    this.tail = currentNode;
-    return deleteTail.value;
+
+    // return deleted HEAD value
+    return deleteHead.value;
   }
 
-  deleteHead() {
-    const deleteHead = this.head;
+  // DELETE AT THE END
+  deleteTail() {
+    // store target TAIL in a variable
+    const deleteTail = this.tail;
+
+    // if the LINKEDLIST is empty
     if (!this.head) return "Linked List is empty";
+
+    // if LINKEDLIST has only 1 NODE
     if (this.head === this.tail) {
+      // set back to initial state
       this.head = null;
       this.tail = null;
-      return deleteHead;
+      // return delete TAIL value
+      return deleteTail.value;
     }
-    if (this.head.next) this.head = this.head.next;
-    else {
-      this.head = null;
-      this.tail = null;
+
+    // if LINKEDLIST has more 1 NODE
+    let currentNode = this.head;
+
+    // while current NODE next is not null (not the end of the list)
+    while (currentNode.next) {
+      // if reached the SECOND LAST NODE
+      if (!currentNode.next.next) {
+        currentNode.next = null;
+      
+      // if not, jump to next node
+      } else currentNode = currentNode.next;
     }
-    return deleteHead.value;
+
+    // set TAIL as current node
+    this.tail = currentNode;
+
+    // return deleted TAIL value
+    return deleteTail.value;
   }
 
   fromArray(arrayOfValues) {

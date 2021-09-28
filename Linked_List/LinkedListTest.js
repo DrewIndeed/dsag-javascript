@@ -11,6 +11,6 @@ test1.fromArray(["Andrew", "John"]);
 console.log(test1.toArray(), "\n");
 console.log(test1.toString(), "\n");
 console.log("Delete ending Node:", test1.deleteTail(), "\n");
-console.log("Delete starting Node:", test1.deleteHead(), "\n");
+// console.log("Delete starting Node:", test1.deleteHead(), "\n");
 console.log(test1.toArray(), "\n");
 console.log(test1.toString(), "\n");
