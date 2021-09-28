@@ -29,6 +29,29 @@ export default class LinkedList {
     return this;
   }
 
+  deleteTail() {
+    const deleteTail = this.tail;
+    // linked list is empty
+    if (!this.head) return "Linked List is empty";
+    // linked list has only 1 node
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+      return deleteTail;
+    }
+    // if linked list has more than 1 node
+    let currentNode = this.head;
+    while (currentNode) {
+      if (!currentNode.next.next) {
+        currentNode.next = null;
+        break;
+      } else currentNode = currentNode.next;
+    }
+    this.tail = currentNode;
+    return deleteTail.value;
+  }
+
+
   // com
   toArray() {
     let nodes = [];
