@@ -130,6 +130,37 @@ export default class LinkedList {
     return this;
   }
 
+  // REVERSE THE LINKEDLIST
+  reverse() {
+    let currentNode = this.head;
+    let prevNode = null;
+    let nextNode = null;
+
+    // while there is a node
+    while (currentNode) {
+      // point nextNode to where currentNode NEXT was pointing
+      nextNode = currentNode.next;
+
+      // point currentNode NEXT to where prevNode was pointing (reverse happened)
+      currentNode.next = prevNode;
+
+      // point prevNode to where currentNode was pointing
+      prevNode = currentNode;
+
+      // point currentNode to where nextNode was pointing
+      currentNode = nextNode;
+    }
+
+    // point TAIL to where HEAD was pointing (which is NULL)
+    this.tail = this.head;
+
+    // point HEAD to where prevNode was pointing (which is the last element of initial list)
+    this.head = prevNode;
+
+    // return reversed LINKEDLIST
+    return this;
+  }
+
   fromArray(arrayOfValues) {
     arrayOfValues.forEach((value) => this.append(value));
     return this;

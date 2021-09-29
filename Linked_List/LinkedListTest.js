@@ -39,8 +39,15 @@ console.log("Delete starting Node:", test1.deleteHead(), "\n");
 console.log("Delete ending Node:", test1.deleteTail(), "\n");
 
 // delete all occurences of a value
+console.log("Deleting all nodes that contains key 26...\n");
 test1.deleteAllOccrencesByKey(26);
 
 // print second time to updates
+console.log(test1.toArray(), "\n");
+console.log(test1.toString(), "\n");
+
+// print third time to see linkedlist after reverse
+console.log("Reversing linked list...\n");
+test1.reverse();
 console.log(test1.toArray(), "\n");
 console.log(test1.toString(), "\n");
