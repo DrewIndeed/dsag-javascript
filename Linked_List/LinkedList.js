@@ -83,13 +83,13 @@ export default class LinkedList {
     // if LINKEDLIST has more 1 NODE
     let currentNode = this.head;
 
-    // while current NODE next is not null (not the end of the list)
+    // while current NODE NEXT is not null (not the end of the list)
     while (currentNode.next) {
       // if reached the SECOND LAST NODE
       if (!currentNode.next.next) {
         currentNode.next = null;
-      
-      // if not, jump to next node
+
+        // if not, jump to next node
       } else currentNode = currentNode.next;
     }
 
@@ -98,6 +98,25 @@ export default class LinkedList {
 
     // return deleted TAIL value
     return deleteTail.value;
+  }
+
+  deleteAllOccrencesByKey(key) {
+    // if the LINKEDLIST is empty
+    if (!this.head) return "Linked List is empty";
+
+    while (this.head.value === key) {
+      this.head = this.head.next;
+    }
+
+    let currentNode = this.head;
+    while (currentNode.next) {
+      if (currentNode.next.value === key) {
+        currentNode.next = currentNode.next.next;
+      } else {
+        currentNode = currentNode.next;
+      }
+    }
+    return this;
   }
 
   fromArray(arrayOfValues) {
