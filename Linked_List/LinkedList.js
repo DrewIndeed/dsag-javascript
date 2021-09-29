@@ -100,22 +100,33 @@ export default class LinkedList {
     return deleteTail.value;
   }
 
+  // DELETE ALL OCCURENCES OF A KEY
   deleteAllOccrencesByKey(key) {
     // if the LINKEDLIST is empty
     if (!this.head) return "Linked List is empty";
 
+    // if HEAD contains target key, then make the next node to be HEAD
     while (this.head.value === key) {
       this.head = this.head.next;
     }
 
+    // stote the HEAD after removing from the front
     let currentNode = this.head;
+
+    // while it is not the end of the linked list
     while (currentNode.next) {
+      // if the ahead NODE value is the same as tha target key
       if (currentNode.next.value === key) {
+        // link the current NODE NEXT to the targeted NODE NEXT
         currentNode.next = currentNode.next.next;
-      } else {
+      }
+      // otherwise, keep traversing
+      else {
         currentNode = currentNode.next;
       }
     }
+
+    // return updated linked list
     return this;
   }
 
