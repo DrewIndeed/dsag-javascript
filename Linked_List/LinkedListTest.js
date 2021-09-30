@@ -89,3 +89,5 @@ console.log("Delete tail 2:", test2.deleteTail());
 console.log("Delete tail 3:", test2.deleteTail());
 console.log("\n\t\t\t\t\t\t\t---- toString() after deleteTail() ----\n");
 console.log(test2.toString(), "\n");
+console.log("\n\t\t\t\t\t\t\t---- reverse() ----\n");
+console.log(test2.reverse().toString(), "\n");

@@ -51,6 +51,7 @@ export default class LinkedListReimplement {
     this.tail = currentNode;
     return deleteNode.value;
   }
+
   toArray() {
     const nodes = [];
     if (!this.head) return "Empty!";
@@ -77,5 +78,21 @@ export default class LinkedListReimplement {
       );
     }
     return result;
+  }
+
+  reverse() {
+    if (!this.head) return "Empty!";
+    let curr = this.head;
+    let prev = null;
+    let next = null;
+    while (curr) {
+      next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    this.tail = this.head;
+    this.head = prev;
+    return this;
   }
 }
