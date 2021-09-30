@@ -28,7 +28,14 @@ export default class LinkedListReimplement {
   deleteHead() {
     const deleteNode = this.head;
     if (!this.head) return "None!";
-    this.head = this.head.next;
+    // Now i know why we need this check. Cause when we delete head and if the deletion empty the list,
+    // we need to set the new head to an existing node after it. We can assume that if we dont do this,
+    // it will auto point to null. No no! It will point wildly to a place in our memory and memory will be leaked.
+    if (this.head.next) this.head = this.head.next;
+    else {
+      this.head = null;
+      this.tail = null;
+    }
     return deleteNode.value;
   }
 
