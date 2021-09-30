@@ -59,6 +59,20 @@ export default class LinkedListReimplement {
     return deleteNode.value;
   }
 
+  deleteAllOccrencesByKey(key) {
+    if (!this.head) return "Empty!";
+    while (this.head.value === key) this.head = this.head.next;
+    let currentNode = this.head;
+    while (currentNode.next) {
+      if (currentNode.next.value === key) {
+        currentNode.next = currentNode.next.next;
+      } else {
+        currentNode = currentNode.next;
+      }
+    }
+    return this;
+  }
+
   toArray() {
     const nodes = [];
     if (!this.head) return "Empty!";
