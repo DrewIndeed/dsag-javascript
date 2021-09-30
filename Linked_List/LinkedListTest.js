@@ -1,9 +1,8 @@
-import LinkedList from "./LinkedList.js";
+// import LinkedList from "./LinkedList.js";
 import LinkedListReimplement from "./LinkedListReimplement.js";
 
 // create an empty LinkedList
-let test1 = new LinkedList();
-let test2 = new LinkedListReimplement();
+// let test1 = new LinkedList();
 
 // // add data, duplicates using append() and preprend()
 // test1.prepend(22);
@@ -55,6 +54,7 @@ let test2 = new LinkedListReimplement();
 // console.log(test1.toString(), "\n");
 
 // _________________________________________________________________________________________________________//
+let test2 = new LinkedListReimplement();
 test2.prepend(22);
 test2.prepend(24);
 test2.append(26);
@@ -78,6 +78,14 @@ console.log(test2.toArray());
 console.log("\n\t\t\t\t\t\t\t---- toString() ----\n");
 console.log(test2.toString(), "\n");
 console.log("\n\t\t\t\t\t\t\t---- deleteHead() ----\n");
-console.log("Delete node:", test2.deleteHead());
+console.log("Delete head 1:", test2.deleteHead());
+console.log("Delete head 2:", test2.deleteHead());
+console.log("Delete head 3:", test2.deleteHead());
 console.log("\n\t\t\t\t\t\t\t---- toString() after deleteHead() ----\n");
+console.log(test2.toString(), "\n");
+console.log("\n\t\t\t\t\t\t\t---- deleteTail() ----\n");
+console.log("Delete tail 1:", test2.deleteTail());
+console.log("Delete tail 2:", test2.deleteTail());
+console.log("Delete tail 3:", test2.deleteTail());
+console.log("\n\t\t\t\t\t\t\t---- toString() after deleteTail() ----\n");
 console.log(test2.toString(), "\n");
