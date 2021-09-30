@@ -40,4 +40,16 @@ export default class LinkedListReimplement {
     valuesArray.forEach((value) => this.append(value));
     return this;
   }
+
+  toString() {
+    let result = "";
+    if (!this.head) return "Empty!";
+    else {
+      const toArray = this.toArray();
+      toArray.forEach(
+        (value, index) => (result += `[${index + 1} >> ${value}] --> `)
+      );
+    }
+    return result;
+  }
 }
