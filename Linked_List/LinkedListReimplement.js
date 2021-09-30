@@ -25,6 +25,13 @@ export default class LinkedListReimplement {
     return this;
   }
 
+  deleteHead() {
+    const deleteNode = this.head;
+    if (!this.head) return "None!";
+    this.head = this.head.next;
+    return deleteNode.value;
+  }
+
   toArray() {
     const nodes = [];
     if (!this.head) return "Empty!";
