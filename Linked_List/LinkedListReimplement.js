@@ -24,4 +24,20 @@ export default class LinkedListReimplement {
     }
     return this;
   }
+
+  toArray() {
+    const nodes = [];
+    if (!this.head) return "Empty!";
+    let currentNode = this.head;
+    while (currentNode) {
+      nodes.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    return nodes;
+  }
+
+  fromArray(valuesArray) {
+    valuesArray.forEach((value) => this.append(value));
+    return this;
+  }
 }

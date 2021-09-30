@@ -70,4 +70,6 @@ test2.append(27);
 test2.append(26);
 test2.append(26);
 test2.append("Julian");
+test2.fromArray(["Andrew", "John"]);
 console.log(test2);
+console.log(test2.toArray());
