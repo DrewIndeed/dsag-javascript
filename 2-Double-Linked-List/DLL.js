@@ -18,7 +18,7 @@ export default class DLL {
       this.head = newNode;
     }
     return this;
-	};
+  };
 
   toArray() {
     const nodes = [];
@@ -32,9 +32,16 @@ export default class DLL {
 
   toString() {
     let rs = "";
+    const generateJump = (num) => {
+      let jumps = "";
+      for (let i = 0; i < num; i++) {
+        jumps += "\t";
+      }
+      return jumps;
+    };
     this.toArray().map(
       (node, index) =>
-        (rs += `<--prev--[${index + 1} >> ${node.value}]--next-->`)
+        (rs += `${generateJump(index)}^--prev--[${index + 1} >> ${node.value}]--next--v\n`)
     );
     return rs;
   }
