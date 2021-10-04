@@ -20,6 +20,20 @@ export default class DLL {
     return this;
   };
 
+  append = (value) => {
+    const newNode = new DLLNode(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      newNode.previous = this.tail;
+      newNode.next = null;
+      this.tail = newNode;
+    }
+    return this;
+  };
+
   toArray() {
     const nodes = [];
     let currentNode = this.head;
@@ -35,13 +49,15 @@ export default class DLL {
     const generateJump = (num) => {
       let jumps = "";
       for (let i = 0; i < num; i++) {
-        jumps += "\t";
+        jumps += " ";
       }
       return jumps;
     };
     this.toArray().map(
       (node, index) =>
-        (rs += `${generateJump(index)}^--prev--[${index + 1} >> ${node.value}]--next--v\n`)
+        (rs += `${generateJump(index)}^--prev - - [${index + 1} >> ${
+          node.value
+        }] - - next--v\n`)
     );
     return rs;
   }
