@@ -34,19 +34,33 @@ export default class DLL {
     return this;
   };
 
-  deleteHead() {
-    let deleteNode = null;
+  deleteHead = () => {
     if (!this.head) return "Empty!";
     if (this.head === this.tail) {
+      const deleteNode = this.head;
       this.head = null;
       this.tail = null;
-    } else {
-      this.head = this.head.next;
-      deleteNode = this.head.previous;
-      this.head.previous = null;
+      return deleteNode.value;
     }
+    this.head = this.head.next;
+    const deleteNode = this.head.previous;
+    this.head.previous = null;
     return deleteNode.value;
-  }
+  };
+
+  deleteTail = () => {
+    if (!this.head) return "Empty!";
+    if (this.head === this.tail) {
+      const deleteNode = this.tail;
+      this.head = null;
+      this.tail = null;
+      return deleteNode.value;
+    }
+    this.tail = this.tail.previous;
+    const deleteNode = this.tail.next;
+    this.tail.next = null;
+    return deleteNode.value;
+  };
 
   toArray() {
     const nodes = [];
