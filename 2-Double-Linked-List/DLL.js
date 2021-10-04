@@ -1,64 +1,99 @@
 import DLLNode from "./DLLNode.js";
 
 export default class DLL {
+  // constructor with two pointers to represent head and tail of LinkedList
   constructor() {
     this.head = null;
     this.tail = null;
   }
 
+  // INSERT AT THE BEGINNING
   prepend = (value) => {
+    // create new NODE to contain desired VALUE
     const newNode = new DLLNode(value);
+
+    // if the list is empty
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
-    } else {
+    }
+
+    // otherwise
+    else {
       newNode.next = this.head;
       this.head.previous = newNode;
       newNode.previous = null;
       this.head = newNode;
     }
+
+    // return updated list
     return this;
   };
 
+  // INSERT AT THE END
   append = (value) => {
+    // create new NODE to contain desired VALUE
     const newNode = new DLLNode(value);
+
+    // if the list is empty
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
-    } else {
+    }
+
+    // otherwise
+    else {
       this.tail.next = newNode;
       newNode.previous = this.tail;
       newNode.next = null;
       this.tail = newNode;
     }
+
+    // return updated list
     return this;
   };
 
+  // DELETE AT THE BEGINNING
   deleteHead = () => {
+    // if the list is empty
     if (!this.head) return "Empty!";
+
+    // if the list has 1 item
     if (this.head === this.tail) {
       const deleteNode = this.head;
       this.head = null;
       this.tail = null;
       return deleteNode.value;
     }
+
+    // otherwise, the list has more than 1 item
     this.head = this.head.next;
     const deleteNode = this.head.previous;
     this.head.previous = null;
+
+    // return deleted node's value
     return deleteNode.value;
   };
 
+  // DELETE AT THE END
   deleteTail = () => {
+    // if the list is empty
     if (!this.head) return "Empty!";
+
+    // if the list has 1 item
     if (this.head === this.tail) {
       const deleteNode = this.tail;
       this.head = null;
       this.tail = null;
       return deleteNode.value;
     }
+
+    // otherwise, the list has more than 1 item
     this.tail = this.tail.previous;
     const deleteNode = this.tail.next;
     this.tail.next = null;
+
+    // return deleted node's value
     return deleteNode.value;
   };
 
