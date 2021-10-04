@@ -34,6 +34,20 @@ export default class DLL {
     return this;
   };
 
+  deleteHead() {
+    let deleteNode = null;
+    if (!this.head) return "Empty!";
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+      deleteNode = this.head.previous;
+      this.head.previous = null;
+    }
+    return deleteNode.value;
+  }
+
   toArray() {
     const nodes = [];
     let currentNode = this.head;
@@ -45,6 +59,7 @@ export default class DLL {
   }
 
   toString() {
+    if (!this.head) return "DLL is empty! Nothing to print!";
     let rs = "";
     const generateJump = (num) => {
       let jumps = "";
