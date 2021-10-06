@@ -6,6 +6,7 @@ testDLL.append(567);
 testDLL.append(6789);
 testDLL.append(77);
 testDLL.append(289);
+testDLL.append(3000);
 testDLL.prepend(22);
 testDLL.prepend(123);
 testDLL.prepend(88);
