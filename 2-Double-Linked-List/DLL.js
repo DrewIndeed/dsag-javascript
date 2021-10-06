@@ -97,6 +97,55 @@ export default class DLL {
     return deleteNode.value;
   };
 
+  deleteAllOccrencesByKey(key) {
+    if (!this.head) return "Empty!";
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    let deleteNode = null;
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (currentNode.value === key) {
+        deleteNode = currentNode;
+        // if head is the target to be deleted
+        if (deleteNode === this.head) {
+          // first, move head to the next node after head
+          this.head = deleteNode.next;
+
+          // if the new head is an existing node
+          if (this.head) this.head.previous = null;
+
+          // if all the nodes have the same value as the target key
+          // -> the deleteNode will reach the tail -> gotta reset the tail
+          if (deleteNode === this.tail) this.tail = null;
+        }
+
+        // if tail is the target to be deleted
+        else if (deleteNode === this.tail) {
+          this.tail = deleteNode.previous;
+          this.tail.next = null;
+        }
+
+        // if a middle is the target to be deleted
+        else {
+          const prevNode = deleteNode.previous;
+          const nextNode = deleteNode.next;
+          prevNode.next = nextNode;
+          nextNode.previous = prevNode;
+        }
+      }
+
+      // tranverse to the next node
+      currentNode = currentNode.next;
+    }
+
+    // return deleted Linked List
+    return this;
+  }
+
   toArray() {
     const nodes = [];
     let currentNode = this.head;
