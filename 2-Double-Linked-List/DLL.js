@@ -125,4 +125,28 @@ export default class DLL {
     );
     return rs;
   }
+
+  reverseByValue = () => {
+    if (!this.head) return "Empty!";
+    if (this.head === this.tail) return this;
+    let left = this.head,
+      right = this.head;
+
+    //Move to the right end
+    while (right.next) {
+      right = right.next;
+    }
+
+    //Swap the data at both the ends
+    while (left !== right && left.prev !== right) {
+      let t = left.value;
+      left.value = right.value;
+      right.value = t;
+      left = left.next;
+      right = right.prev;
+    }
+
+    //Return the reversed list
+    return this;
+  };
 }

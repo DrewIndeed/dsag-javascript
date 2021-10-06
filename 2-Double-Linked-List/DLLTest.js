@@ -24,3 +24,6 @@ console.log("Delete Tail 1:", testDLL.deleteTail());
 console.log("Delete Tail 2:", testDLL.deleteTail());
 console.log("Delete Tail 3:", testDLL.deleteTail());
 console.log(testDLL.toString());
+console.log("\n\t\t\t\t---- reverse() ----\n");
+testDLL.reverseByValue();
+console.log(testDLL.toString());
