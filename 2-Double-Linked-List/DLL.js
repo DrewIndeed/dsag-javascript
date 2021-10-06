@@ -126,6 +126,34 @@ export default class DLL {
     return rs;
   }
 
+  reverseByPointer() {
+    if (!this.head) return "Empty!";
+    if (this.head === this.tail) return this;
+    let currNode = this.head;
+    let prevNode = null;
+    let nextNode = null;
+
+    while (currNode) {
+      // Store next node.
+      nextNode = currNode.next;
+      prevNode = currNode.previous;
+
+      // Change next node of the current node so it would link to previous node.
+      currNode.next = prevNode;
+      currNode.previous = nextNode;
+
+      // Move prevNode and currNode nodes one step forward.
+      prevNode = currNode;
+      currNode = nextNode;
+    }
+
+    // Reset head and tail.
+    this.tail = this.head;
+    this.head = prevNode;
+
+    return this;
+  }
+
   reverseByValue = () => {
     if (!this.head) return "Empty!";
     if (this.head === this.tail) return this;
@@ -138,11 +166,8 @@ export default class DLL {
     //Swap the data at both the ends
     while (left !== right && left.previous !== right) {
       let t = left.value;
-      console.log(t);
-      console.log(right.value);
       left.value = right.value;
       right.value = t;
-
       left = left.next;
       right = right.previous;
     }
